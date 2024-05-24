@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scraping Interface</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/"><img src="../favicon.ico" width="48" alt="logo"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/" title="Home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://github.com/JeanCSF/snkr_magnet_crawler" title="Repositório" class="nav-link" target="_blank" rel="noreferrer">Repositório</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://snkrmagnet.com.br" title="Nosso Site" class="nav-link text-lg-end" target="_blank" rel="noreferrer">Site Principal</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="d-flex flex-column flex-lg-row justify-content-between p-4 gap-3">
+        <div class="col-6">
+            <p class="fs-1">Scraping Interface</p>
+            <form id="scrapingForm">
+                <div class="mb-3 d-flex grid gap-1">
+                    <div class="col-4">
+                        <label for="headlessSelect" class="form-label">Exibir Navegador:</label>
+                        <select name="headlessSelect" id="headlessSelect" class="form-select">
+                            <option value="false">SIM</option>
+                            <option value="shell">NÃO</option>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <label for="saveTypeSelect" class="form-label">Salvar como:</label>
+                        <select name="saveTypeSelect" id="saveTypeSelect" class="form-select">
+                            <option value="excel">EXCEL</option>
+                            <option value="db">MONGODB</option>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <label for="maxConcurrency" class="form-label">Quantidade de navegadores:</label>
+                        <input type="number" name="maxConcurrency" id="maxConcurrency" class="form-control" min="1" max="30" value="1">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="storeSelect" class="form-label">Loja:</label>
+                    <select name="storeSelect" id="storeSelect" class="form-select">
+                        <option value='{"url": "https://www.nike.com.br/", "storeName": "nike"}'>Nike</option>
+                        <option value='{"url": "https://www.netshoes.com.br/", "storeName": "netshoes"}'>Netshoes</option>
+                        <option value='{"url": "https://www.sunsetskateshop.com.br/", "storeName": "sunsetskateshop"}'>Sunset Skateshop</option>
+                        <option value='{"url": "https://www.ostore.com.br/", "storeName": "ostore"}'>Ostore</option>
+                        <option value='{"url": "https://www.wallsgeneralstore.com.br/", "storeName": "wallsgeneralstore"}'>Walls General Store</option>
+                        <option value='{"url": "https://www.ratusskateshop.com.br/", "storeName": "ratusskateshop"}'>Ratus Skateshop</option>
+                        <option value='{"url": "https://www.maze.com.br/", "storeName": "maze"}'>Maze</option>
+                        <option value='{"url": "https://www.sunika.com.br/", "storeName": "sunika"}'>Sunika</option>
+                        <option value='{"url": "https://www.correderua.com.br/", "storeName": "correderua"}'>Corre De Rua</option>
+                        <option value='{"url": "https://www.artwalk.com.br/", "storeName": "artwalk"}'>Artwalk</option>
+                        <option value='{"url": "https://www.gdlp.com.br/", "storeName": "gdlp"}'>GDLP</option>
+                        <option value='{"url": "https://www.lojavirus.com.br/", "storeName": "lojavirus"}'>Loja Virus</option>
+                        <option value='{"url": "https://youridstore.com.br/", "storeName": "youridstore"}'>YourID</option>
+                    </select>
+                </div>
+                <div class="text-end">
+                    <button type="submit" class="btn btn-primary">Iniciar</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-6 border border-info-subtle bg-dark p-3 text-white fw-bolder fixed overflow-y-scroll" style="max-height: 285px;" id="logsContainer">
+            <ul class="list-unstyled" id="logs" style="font-size: x-small;">
+
+            </ul>
+        </div>
+    </main>
+
+    <footer class="bg-light text-muted py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Ícones por Freepik:</h5>
+                    <ul class="list-unstyled">
+                        <li><a class="text-reset text-decoration-none" href="https://br.freepik.com/search?format=search&query=Siipkan%20Creative" target="_blank" rel="noreferrer">Siipkan Creative</a></li>
+                        <li><a class="text-reset text-decoration-none" href="https://br.freepik.com/search?format=search&query=kerismaker" target="_blank" rel="noreferrer">kerismaker</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h5>Redes Sociais</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="https://www.linkedin.com/in/jean-carlos-6149a2232/" class="text-reset text-decoration-none" target="_blank" rel="noreferrer">Linkedin</a></li>
+                        <li><a href="https://www.facebook.com/fookinselfish/" class="text-reset text-decoration-none" target="_blank" rel="noreferrer">Facebook</a></li>
+                        <li><a href="https://www.instagram.com/cocao.php" class="text-reset text-decoration-none" target="_blank" rel="noreferrer">Instagram</a></li>
+                    </ul>
+                </div>
+                <p class="text-end">
+                    Desenvolvido por:
+                    <a href="https://github.com/JeanCSF" class="text-reset" target="_blank" rel="noreferrer">JeanCSF</a>
+                    &copy; <span id="currentYear"></span>
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
